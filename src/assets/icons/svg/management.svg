@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Apple-TV" transform="translate(0.000000, -520.000000)">
+            <rect id="矩形-copy-17" fill="#FFFFFF" x="0" y="0" width="90" height="1080"></rect>
+            <g id="Group-3" transform="translate(0.000000, 520.000000)">
+                <rect id="矩形-copy-29" fill="#F7FBFF" x="0" y="0" width="90" height="90"></rect>
+                <text id="Management-Copy" font-family="PingFangSC-Regular, PingFang SC" font-size="13" font-weight="normal" fill="#6D8EB3">
+                    <tspan x="6" y="69">Management</tspan>
+                </text>
+                <g id="分组-3-copy" transform="translate(32.000000, 18.000000)" stroke="#6E8FB4" stroke-width="1.5">
+                    <rect id="矩形" x="0.75" y="0.75" width="24.5" height="26.5" rx="3.5"></rect>
+                    <ellipse id="椭圆形" cx="9.53333333" cy="11.375" rx="4.33333333" ry="4.375"></ellipse>
+                    <path d="M3.46666667,21.875 C3.46666667,18.4922559 6.18280585,15.75 9.53333333,15.75 C12.8838608,15.75 15.6,18.4922559 15.6,21.875" id="路径" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M19.9333333,6.5625 L24.8334011,6.5625" id="路径-7" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M19.9333333,14 L24.8334011,14" id="路径-7-copy" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M19.9333333,21.4375 L24.8334011,21.4375" id="路径-7-copy-2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 5</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Apple-TV" transform="translate(-154.000000, -397.000000)">
+            <rect id="矩形-copy-18" fill="#FFFFFF" x="154" y="0" width="90" height="1080"></rect>
+            <g id="Group-5" transform="translate(154.000000, 397.000000)">
+                <rect id="矩形-copy-22" fill="#F7FBFF" x="0" y="0" width="90" height="90"></rect>
+                <rect id="矩形-copy-25" fill="#003B7E" x="0" y="0" width="2" height="90"></rect>
+                <text id="Dashboard-Copy-2" font-family="PingFangSC-Regular, PingFang SC" font-size="13" font-weight="normal" fill="#6D8EB3">
+                    <tspan x="12" y="69">Dashboard</tspan>
+                </text>
+                <g id="分组-2-copy-2" transform="translate(33.000000, 18.000000)" stroke="#6E8FB4">
+                    <rect id="矩形" stroke-width="1.5" x="1.58333333" y="9.78225806" width="5.16666667" height="13.8548387" rx="2.58333333"></rect>
+                    <rect id="矩形-copy" stroke-width="1.5" x="9.95833333" y="5.26612903" width="5.16666667" height="18.3709677" rx="2.58333333"></rect>
+                    <rect id="矩形-copy-2" stroke-width="1.5" x="18.3333333" y="0.75" width="5.16666667" height="22.8870968" rx="2.58333333"></rect>
+                    <path d="M0.833333333,26.6621757 L24.25,26.6621757" id="路径-2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <polyline id="路径-6" stroke-linecap="round" stroke-linejoin="round" points="21.3333333 2.51481438 19.9069147 2.51481438 19.9069147 4.71772717"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
