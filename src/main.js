@@ -18,3 +18,16 @@ new Vue({
   store,
   render: h => h(App),
 }).$mount('#app');
+
+router.beforeEach((to, from, next) => {
+  if (
+    to.path === '/login'
+    || to.path === '/alerts'
+    || to.path === '/dashboard'
+    || to.path === '/management'
+  ) {
+    next();
+  } else {
+    next('/alerts');
+  }
+});

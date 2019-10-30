@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Apple-TV" transform="translate(-154.000000, -275.000000)">
+            <rect id="矩形-copy-18" fill="#FFFFFF" x="154" y="0" width="90" height="1080"></rect>
+            <g id="Group-4" transform="translate(154.000000, 275.000000)">
+                <rect id="矩形-copy-21" fill="#F7FBFF" x="0" y="0" width="90" height="90"></rect>
+                <rect id="矩形-copy-24" fill="#003B7E" x="0" y="0" width="2" height="90"></rect>
+                <g id="分组-copy-2" transform="translate(34.000000, 17.000000)" stroke="#003B7E" stroke-width="1.5">
+                    <path d="M11.9259259,8.38636364 C8.10595641,8.38636364 5.00925926,11.4830608 5.00925926,15.3030303 L5.00925926,23.52 C5.00925926,23.7056011 5.15971872,23.8560606 5.34531987,23.8560606 L18.506532,23.8560606 C18.6921331,23.8560606 18.8425926,23.7056011 18.8425926,23.52 L18.8425926,15.3030303 C18.8425926,11.4830608 15.7458954,8.38636364 11.9259259,8.38636364 Z" id="矩形"></path>
+                    <path d="M11.5,4.24242424 L11.5,0" id="路径" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M0.851851852,6.78787879 L4.25925926,9.33333333" id="路径-3" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M19.5925926,6.78787879 L23,9.33333333" id="路径-3-copy" stroke-linecap="round" stroke-linejoin="round" transform="translate(21.296296, 8.060606) scale(-1, 1) translate(-21.296296, -8.060606) "></path>
+                    <path d="M0,27.5757576 L23,27.5757576" id="路径-4" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8.09259259,16.1212121 L8.09259259,21.2121212" id="路径-5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+                <text id="Alerts-Copy-2" font-family="PingFangSC-Regular, PingFang SC" font-size="13" font-weight="normal" fill="#003B7E">
+                    <tspan x="28" y="68">Alerts</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -10,8 +10,8 @@
         <el-menu-item :index="menu.path"
                       :key="menu.name"
                       @click="showMy">
+          <svg-icon :icon-class="selectItem === menu.path ? menu.selectIcon: menu.name"></svg-icon>
 
-          444
         </el-menu-item>
       </template>
     </el-menu>
@@ -28,7 +28,7 @@ export default {
     };
   },
   mounted() {
-    // this.selectItem = this.$router.options.routes[0].children[0].path;
+    this.selectItem = this.$router.options.routes[0].children[0].path;
   },
   methods: {
     handleSelect(e) {
@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 .el-container {
   height: 100%;
-  background-color: #242424;
+  background-color: #fff;
   @include flex-column;
   justify-content: center;
   position: relative;
@@ -75,7 +75,7 @@ export default {
 }
 
 .el-menu {
-  background-color: #242424;
+  background-color: #fff;
   border-right: 0;
 
   .el-menu-item {
@@ -83,7 +83,7 @@ export default {
 
     &:hover,
     &:focus {
-      background-color: #242424;
+      background-color: #fff;
     }
     svg {
       @include set-size(48px);

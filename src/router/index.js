@@ -9,26 +9,26 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/dashboard',
+      path: '/',
       component: () => import('../views/dashboard/material'),
       children: [
         {
-          path: '/dashboard',
-          name: '首页',
-          selectIcon: '首页-选中',
-          component: () => import(/* webpackChunkName: "dashboard" */ '../views/alerts'),
+          path: '/alerts',
+          name: 'alerts',
+          selectIcon: 'alerts-select',
+          component: () => import('../views/alerts'),
         },
         {
           path: '/dashboard',
-          name: '首页',
-          selectIcon: '首页-选中',
-          component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard'),
+          name: 'dashboard',
+          selectIcon: 'dashboard-select',
+          component: () => import('../views/dashboard'),
         },
         {
-          path: '/dashboard',
-          name: '首页',
-          selectIcon: '首页-选中',
-          component: () => import(/* webpackChunkName: "dashboard" */ '../views/management'),
+          path: '/management',
+          name: 'management',
+          selectIcon: 'management-select',
+          component: () => import('../views/management'),
         },
       ],
     },
