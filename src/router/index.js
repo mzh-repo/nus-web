@@ -1,27 +1,41 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import Router from 'vue-router';
+import Login from '../views/login.vue';
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home,
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-];
-
-const router = new VueRouter({
-  routes,
+export default new Router({
+  mode: 'hash',
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: '/dashboard',
+      component: () => import('../views/dashboard/material'),
+      children: [
+        {
+          path: '/dashboard',
+          name: '首页',
+          selectIcon: '首页-选中',
+          component: () => import(/* webpackChunkName: "dashboard" */ '../views/alerts'),
+        },
+        {
+          path: '/dashboard',
+          name: '首页',
+          selectIcon: '首页-选中',
+          component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard'),
+        },
+        {
+          path: '/dashboard',
+          name: '首页',
+          selectIcon: '首页-选中',
+          component: () => import(/* webpackChunkName: "dashboard" */ '../views/management'),
+        },
+      ],
+    },
+    {
+      path: '/',
+      name: 'login',
+      component: Login,
+    },
+  ],
 });
-
-export default router;
