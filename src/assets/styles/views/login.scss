@@ -1,0 +1,87 @@
+.max {
+  @include set-size(100%);
+}
+
+.container {
+  @include flex-row;
+  @include set-size(100%);
+}
+
+.saide {
+  @include set-size(800px, 100%);
+
+  img {
+    @include set-size(100%);
+  }
+}
+
+.main {
+  background-color: #fff;
+  width: 1120px;
+  min-width: 350px;
+
+  img {
+    @include set-size(126px, 58px);
+    margin-top: 12.2%;
+    margin-bottom: 2%;
+  }
+
+  p {
+    @include set-size(446px, 84px);
+    font-size: 60px;
+    color: #003d7c;
+    font-family: "PingFang SC Semibold";
+    font-weight: 600;
+    margin: 0 auto;
+    margin-bottom: 120px;
+  }
+}
+
+.form-item {
+  @include set-size(68%, 100px);
+  background-color: #ebf1f8;
+  margin: 0 auto;
+  line-height: 110px;
+
+  span {
+    display: inline-block;
+    position: relative;
+    @include set-size(28px);
+    line-height: 0;
+    top: 5px;
+
+    img {
+      @include set-size(100%);
+      margin: 0;
+    }
+  }
+
+  input {
+    position: relative;
+    @include set-size(86%, 40px);
+    background-color: #ebf1f8;
+    border: hidden;
+    left: 5px;
+  }
+  //去掉输入框聚焦时产生的边框
+  input:focus {
+    outline: 0;
+  }
+}
+
+.form {
+  button {
+    @include set-size(406px, 106px);
+    font-size: 24px;
+    font-weight: 400;
+    color: #fff;
+    background-color: #366ba5;
+    margin-top: 60px;
+    border: hidden;
+    border-radius: 54px;
+  }
+  // 去掉点击登录按钮时产生的边框
+  button:focus {
+    outline: 0;
+  }
+}
