@@ -32,8 +32,7 @@
 }
 
 .user-pic {
-  width: 150px;
-  height: 150px;
+  @include set-size(150px);
   background-color: #ff6700;
   border-radius: 50%;
 }
@@ -65,8 +64,7 @@
 }
 
 .reset-btn {
-  width: 188px;
-  height: 60px;
+  @include set-size(188px, 60px);
   margin-top: 45px;
   background: rgba(54, 107, 165, 1);
   border-radius: 5px;
@@ -95,12 +93,10 @@
   align-items: center;
 
   /deep/.el-input {
-    height: 60px;
-    width: 600px;
+    @include set-size(600px, 60px);
     margin-right: 10px;
     input {
-      width: 600px;
-      height: 60px;
+      @include set-size(600px, 60px);
       padding-left: 60px;
     }
     .el-input__prefix {
@@ -111,8 +107,7 @@
 }
 
 .search-btn {
-  width: 120px;
-  height: 60px;
+  @include set-size(120px, 60px);
   background: rgba(54, 107, 165, 1);
   border-radius: 5px;
   font-size: 18px;
@@ -131,8 +126,7 @@
 }
 
 .add-btn {
-  width: 280px;
-  height: 60px;
+  @include set-size(280px, 60px);
   @include flex-row;
   justify-content: center;
   align-items: center;
@@ -161,4 +155,16 @@
     width: 400px;
     // margin-right: 10px;
   }
+}
+
+/deep/.el-dialog__header {
+  padding-top: 50px;
+}
+
+/deep/.el-dialog__title {
+  margin-top: 50px;
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 40px;
 }

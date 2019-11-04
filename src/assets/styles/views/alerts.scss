@@ -61,8 +61,7 @@
 }
 
 .line {
-  width: 30px;
-  height: 1px;
+  @include set-size(30px, 1px);
   margin: 0 16px;
   background: rgba(153, 153, 153, 1);
   border-radius: 2px;

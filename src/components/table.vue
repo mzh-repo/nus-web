@@ -12,20 +12,21 @@
                        :label="tableTag.label"
                        :prop="tableTag.prop">
         <template slot-scope="scope">
-          <span v-if="tableTag.prop === 'alarmStatus'">
+          <span v-if="tableTag.prop === 'status'">
             <div :class="getAlarmClassName(scope.row[tableTag.prop])">{{
-              scope.row.alarmStatus_string
+              scope.row.status_string
               }}</div>
           </span>
-          <span v-else-if="tableTag.prop === 'processResult'">
-            <div :class="scope.row[tableTag.prop]===1?'escaped':'captured'">{{
-              scope.row[tableTag.prop]===1?'Escaped':'Captured'
+          <span v-else-if="tableTag.prop === 'report_type'">
+            <div :class="getResultClassName(scope.row[tableTag.prop])">{{
+              scope.row.report_type_string
               }}</div>
           </span>
-          <span v-else-if="tableTag.prop === 'facePic'||tableTag.prop === 'humanPic'">
-            <img :src="scope.row[tableTag.prop]"
-                 alt="no pic"
-                 class="img">
+          <span v-else-if="tableTag.prop === 'face_pic'||tableTag.prop === 'human_pic'">
+            <el-image :src="scope.row[tableTag.prop]"
+                      :preview-src-list="[scope.row[tableTag.prop]]"
+                      alt="no pic"
+                      class="img" />
           </span>
           <span v-else
                 class="table-span">{{scope.row[tableTag.prop]}}</span>
@@ -35,12 +36,14 @@
                        align="center"
                        label="Operation"
                        :width="operationLength">
-        <template>
-          <span class="reset">
+        <template slot-scope="scope">
+          <span class="reset"
+                @click="handleResetPassword(scope.row)">
             <svg-icon icon-class="reset" />Password Reset
           </span>
           <div class="line"></div>
-          <span class="delete">
+          <span class="delete"
+                @click="handleDeleteAccount(scope.row)">
             <svg-icon icon-class="delete" />Delete accounts
           </span>
         </template>
@@ -108,6 +111,12 @@ export default {
     handleSizeChange(val) {
       this.$emit('change-size', val);
     },
+    handleResetPassword(val) {
+      this.$emit('reset', val);
+    },
+    handleDeleteAccount(val) {
+      this.$emit('delete', val);
+    },
     tableRowClassName(val) {
       if (val.row.highlight === 1) {
         return 'highlight-row';
@@ -128,13 +137,13 @@ export default {
       if (tag.prop === 'time' || tag.prop === 'lastLogin') {
         return '200px';
       }
-      if (tag.prop === 'facePic' || tag.prop === 'humanPic') {
+      if (tag.prop === 'face_pic' || tag.prop === 'human_pic') {
         return '160px';
       }
-      if (tag.prop === 'processResult') {
+      if (tag.prop === 'report_type') {
         return '160px';
       }
-      if (tag.prop === 'alarmStatus') {
+      if (tag.prop === 'status') {
         return '200px';
       }
       if (tag.prop === 'id') {
@@ -150,17 +159,36 @@ export default {
       return 'auto';
     },
     getAlarmClassName(index) {
+      if (index === -1) {
+        return 'alarm-item alarm-second'; // 红色
+      }
+      if (index === 0) {
+        return 'alarm-item alarm-fourth'; // 黄色
+      }
       if (index === 1) {
-        return 'alarm-item alarm-first';
+        return 'alarm-item alarm-first'; // 绿色
       }
       if (index === 2) {
+        return 'alarm-item  alarm-third'; // 灰色
+      }
+
+      return 'alarm-item';
+    },
+    getResultClassName(index) {
+      if (index === -1) {
         return 'alarm-item alarm-second';
       }
-      if (index === 3) {
+      if (index === 0) {
         return 'alarm-item alarm-third';
       }
-      if (index === 4) {
+      if (index === 1) {
         return 'alarm-item alarm-fourth';
+      }
+      if (index === 2) {
+        return 'alarm-item alarm-third';
+      }
+      if (index === 3) {
+        return 'alarm-item alarm-first';
       }
       return 'alarm-item';
     },

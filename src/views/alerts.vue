@@ -82,19 +82,19 @@ const tableTagList = [
   },
   {
     label: 'FacePic',
-    prop: 'facePic',
+    prop: 'face_pic',
   },
   {
     label: 'HumanPic',
-    prop: 'humanPic',
+    prop: 'human_pic',
   },
   {
     label: 'Process Result',
-    prop: 'processResult',
+    prop: 'report_type',
   },
   {
     label: 'Alarm Status',
-    prop: 'alarmStatus',
+    prop: 'status',
   },
 ];
 export default {
@@ -107,49 +107,66 @@ export default {
             id: 12,
             gender: 'Male',
             time: '2019-08-15 13:23:59',
-            humanPic:
+            human_pic:
               'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
-            facePic:
+            face_pic:
               'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
-            processResult: 1,
-            alarmStatus: 2,
-            alarmStatus_string: 'Unacknowledged',
+            report_type: -1,
+            status: -1,
+            report_type_string: 'Unprocessed',
+            status_string: 'Unacknowledged',
           },
           {
             id: 12,
             gender: 'Male',
             time: '2019-08-15 13:23:59',
-            humanPic:
+            human_pic:
               'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
-            facePic:
+            face_pic:
               'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
-            processResult: 2,
-            alarmStatus: 1,
-            alarmStatus_string: 'Male',
+            report_type: 2,
+            status: 1,
+            report_type_string: 'Captured',
+            status_string: 'Male',
           },
           {
             id: 12,
             gender: 'Male',
             time: '2019-08-15 13:23:59',
-            humanPic:
+            human_pic:
               'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
-            facePic:
+            face_pic:
               'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
-            processResult: 2,
-            alarmStatus: 3,
-            alarmStatus_string: 'Female',
+            report_type: 3,
+            status: 1,
+            report_type_string: 'Escaped',
+            status_string: 'Male',
           },
           {
             id: 12,
             gender: 'Male',
             time: '2019-08-15 13:23:59',
-            humanPic:
+            human_pic:
               'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
-            facePic:
+            face_pic:
               'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
-            processResult: 1,
-            alarmStatus: 4,
-            alarmStatus_string: 'Unsure',
+            report_type: 0,
+            status: 2,
+            report_type_string: 'Whitelist',
+            status_string: 'Female',
+          },
+          {
+            id: 12,
+            gender: 'Male',
+            time: '2019-08-15 13:23:59',
+            human_pic:
+              'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
+            face_pic:
+              'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1572504241&di=2b93e8dff245afa1d11724ee7d925c09&src=http://b-ssl.duitang.com/uploads/item/201503/14/20150314145026_8s5ar.jpeg',
+            report_type: 1,
+            status: 0,
+            report_type_string: 'Keepitis',
+            status_string: 'Unsure',
           },
         ],
         tableTagList,
@@ -187,10 +204,16 @@ export default {
       },
     };
   },
-  created() {},
+  mounted() {
+    this.getList();
+  },
   methods: {
     getList() {
-      console.log(this.searchData);
+      const data = {};
+      Object.assign(data, this.searchData);
+      this.$axios.get(`/alarm?filters=${JSON.stringify(data)}`).then((res) => {
+        console.log(res);
+      });
     },
     searchList() {},
     selectDate() {

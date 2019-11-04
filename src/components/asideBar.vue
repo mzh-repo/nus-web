@@ -7,8 +7,7 @@
              @select="handleSelect">
       <template v-for="menu in routerList">
         <el-menu-item :index="menu.path"
-                      :key="menu.name"
-                      @click="showMy">
+                      :key="menu.name">
           <svg-icon :icon-class="selectItem === menu.path ? menu.selectIcon: menu.name"></svg-icon>
 
         </el-menu-item>
@@ -37,9 +36,9 @@ export default {
       this.selectItem = e;
       this.$router.replace(e);
     },
-    showMy() {
-      this.$store.commit('setShow');
-    },
+    // showMy() {
+    //   this.$store.commit('setShow');
+    // },
   },
   watch: {
     '$route.path': {
