@@ -9,10 +9,10 @@
             <g id="Group-6" transform="translate(154.000000, 520.000000)">
                 <rect id="矩形-copy-23" fill="#F7FBFF" x="0" y="0" width="90" height="90"></rect>
                 <rect id="矩形-copy-26" fill="#003B7E" x="0" y="0" width="2" height="90"></rect>
-                <text id="Management-Copy-2" font-family="PingFangSC-Regular, PingFang SC" font-size="13" font-weight="normal" fill="#6D8EB3">
+                <text id="Management-Copy-2" font-family="PingFangSC-Regular, PingFang SC" font-size="13" font-weight="normal" fill="#003B7E">
                     <tspan x="6" y="69">Management</tspan>
                 </text>
-                <g id="分组-3-copy-2" transform="translate(32.000000, 18.000000)" stroke="#6E8FB4" stroke-width="1.5">
+                <g id="分组-3-copy-2" transform="translate(32.000000, 18.000000)" stroke="#003B7E" stroke-width="1.5">
                     <rect id="矩形" x="0.75" y="0.75" width="24.5" height="26.5" rx="3.5"></rect>
                     <ellipse id="椭圆形" cx="9.53333333" cy="11.375" rx="4.33333333" ry="4.375"></ellipse>
                     <path d="M3.46666667,21.875 C3.46666667,18.4922559 6.18280585,15.75 9.53333333,15.75 C12.8838608,15.75 15.6,18.4922559 15.6,21.875" id="路径" stroke-linecap="round" stroke-linejoin="round"></path>

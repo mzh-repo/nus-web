@@ -1,0 +1,87 @@
+.alerts-container {
+  height: 100%;
+  // background-color: #fff;
+  @include flex-column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  padding: 30px 40px 30px;
+  font-family: "PingFangSC-Regular", "PingFang SC";
+  font-weight: 400;
+}
+
+.header-item {
+  margin-right: 50px;
+  float: left;
+  font-size: 28px;
+  color: rgba(51, 51, 51, 1);
+  line-height: 50px;
+}
+
+.header {
+  width: 100%;
+}
+
+.active {
+  font-size: 36px;
+  font-weight: 600;
+  color: rgba(0, 59, 126, 1);
+  line-height: 50px;
+  border-bottom: 4px solid rgba(242, 124, 54, 1);
+}
+
+.search {
+  width: 100%;
+  margin: 32px 0 12px;
+}
+
+.el-form-item {
+  float: left;
+  margin-right: 40px;
+
+  &:last-child {
+    margin: 0;
+  }
+  // &:nth-child(2) {
+  //   width: 80%;
+  // }
+}
+
+/deep/.el-form-item__content {
+  @include flex-row;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-title {
+  margin: 0 10px 0 0;
+  font-size: 18px;
+  color: rgba(102, 102, 102, 1);
+  line-height: 25px;
+}
+
+.line {
+  width: 30px;
+  height: 1px;
+  margin: 0 16px;
+  background: rgba(153, 153, 153, 1);
+  border-radius: 2px;
+}
+
+.serach-alarm {
+  /deep/.el-input {
+    width: 190px;
+  }
+}
+
+.serach-process {
+  /deep/.el-input {
+    width: 130px;
+  }
+}
+
+.serach-gender {
+  /deep/.el-input {
+    width: 100px;
+  }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="28px" viewBox="0 0 29 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>分组 4 copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Apple-TV" transform="translate(-31.000000, -1002.000000)">
+            <rect id="矩形-copy-17" fill="#FFFFFF" x="0" y="0" width="90" height="1080"></rect>
+            <g id="分组-4-copy" transform="translate(31.000000, 1002.000000)" stroke="#6E8FB4" stroke-width="1.5">
+                <path d="M19.0147059,23.4705882 L19.0147059,4.52941176 C19.0147059,2.44210028 17.3226056,0.75 15.2352941,0.75 L4.52941176,0.75 C2.44210028,0.75 0.75,2.44210028 0.75,4.52941176 L0.75,23.4705882 C0.75,25.5578997 2.44210028,27.25 4.52941176,27.25 L15.2352941,27.25 C17.3226056,27.25 19.0147059,25.5578997 19.0147059,23.4705882 Z" id="路径"></path>
+                <path d="M10.1730966,14.6490813 L27.16263,14.6490813" id="路径-9" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polyline id="路径-10" stroke-linecap="round" stroke-linejoin="round" points="23.2352941 8.7516082 27.6360394 14.6105016 23.7962403 19.6300232"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,8 +1,7 @@
 <template>
   <el-container>
     <el-row class="logo">
-      <!-- <svg-icon icon-class="中车" />
-      <svg-icon icon-class="浙江大学" /> -->
+      <svg-icon icon-class="icon" />
     </el-row>
     <el-menu router
              @select="handleSelect">
@@ -15,7 +14,10 @@
         </el-menu-item>
       </template>
     </el-menu>
-
+    <el-row class="user">
+      <div class="user-pic"></div>
+      <svg-icon icon-class="exit" />
+    </el-row>
   </el-container>
 </template>
 
@@ -61,16 +63,32 @@ export default {
 .logo {
   @include flex-column;
   position: absolute;
-  top: 16px;
+  top: 50px;
   width: 100%;
 
   svg {
     margin: auto;
-    @include set-size(30px);
+    @include set-size(60px, 30px);
+  }
+}
+.user {
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
 
-    &:first-child {
-      margin-bottom: 20px;
-    }
+  svg {
+    margin: auto;
+    @include set-size(29px, 28px);
+  }
+
+  .user-pic {
+    @include set-size(50px);
+    background-color: red;
+    border-radius: 50%;
+    margin: 0 0 20px 0;
   }
 }
 
@@ -80,13 +98,14 @@ export default {
 
   .el-menu-item {
     padding: 0 !important;
-
+    height: auto;
+    margin: 16px 0;
     &:hover,
     &:focus {
       background-color: #fff;
     }
     svg {
-      @include set-size(48px);
+      @include set-size(90px);
     }
   }
 }

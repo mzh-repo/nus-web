@@ -1,11 +1,10 @@
 <template>
   <el-container>
-    <el-aside width="63px">
+    <el-aside width="90px">
       <aside-bar />
     </el-aside>
     <el-container class="main-continer">
       <el-main v-if="update">
-        12312312
         <router-view />
       </el-main>
     </el-container>
@@ -46,6 +45,6 @@ export default {
 }
 
 .main-continer {
-  background-color: rgb(242, 242, 242);
+  background-color: rgba(235, 241, 248, 1);
 }
 </style>

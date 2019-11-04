@@ -1,0 +1,192 @@
+.table-container {
+  width: 100%;
+  min-height: 433px;
+  @include flex-column;
+  font-family: "PingFangSC-Regular", "PingFang SC";
+  .el-table {
+    overflow: auto;
+  }
+
+  /deep/ td {
+    min-height: 60px;
+    padding: 2px 0;
+    border-bottom: 4px solid rgba(235, 241, 248, 1);
+
+    .cell {
+      min-height: 60px;
+      @include flex-row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .el-pagination {
+    margin: 10px 0;
+  }
+}
+
+.el-row {
+  margin: 20px 0;
+}
+
+/* 去掉表格中margin-bottom */
+.el-table--border::after,
+.el-table--group::after,
+.el-table::before {
+  display: none;
+}
+
+.el-button {
+  width: 80%;
+  padding: 5px 0;
+  max-width: 90px;
+  min-width: 67px;
+}
+
+.el-table /deep/ .cell {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+}
+
+.row-detail {
+  cursor: pointer;
+}
+
+.el-table::-webkit-scrollbar {
+  display: none;
+}
+
+.el-table /deep/ .cell {
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+}
+
+//表头样式
+/deep/.el-table__header-wrapper {
+  /deep/ th {
+    height: 60px;
+    background-color: rgba(54, 107, 165, 1);
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+  }
+}
+.img {
+  width: 110px;
+  height: 110px;
+}
+.escaped,
+.captured {
+  width: 150px;
+  height: 60px;
+  margin: 0 auto;
+  background: rgba(238, 65, 59, 1);
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 60px;
+}
+.captured {
+  background: rgba(42, 162, 119, 1);
+}
+
+.table-span {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  // line-height: 28px;
+}
+
+.alarm-item {
+  width: 190px;
+  height: 60px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 60px;
+}
+
+.alarm-first {
+  background: rgba(238, 65, 59, 1);
+}
+.alarm-second {
+  background: rgba(255, 175, 66, 1);
+}
+.alarm-third {
+  background: rgba(42, 162, 119, 1);
+}
+.alarm-fourth {
+  background: rgba(119, 119, 119, 1);
+}
+//分页样式
+
+/deep/ .el-pagination.is-background .el-pager li:not(.disabled).active {
+  color: #fff;
+  background-color: #fd7a3a;
+}
+/deep/ .el-pagination {
+  @include flex-row;
+  justify-content: flex-end;
+}
+//分页按钮背景颜色
+/deep/.el-pagination.is-background .btn-next,
+/deep/.el-pagination.is-background .btn-prev,
+/deep/.el-pagination.is-background .el-pager li {
+  background-color: #fff;
+}
+
+.reset {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(0, 59, 126, 1);
+  // line-height: 21px;
+  @include flex-row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    @include set-size(18px, 21px);
+    margin-right: 5px;
+  }
+}
+.line {
+  width: 1px;
+  height: 24px;
+  margin: 0 30px;
+  background: rgba(238, 238, 238, 1);
+  border-radius: 1px;
+}
+.delete {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(238, 65, 59, 1);
+  // line-height: 21px;
+  @include flex-row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    @include set-size(18px, 21px);
+    margin-right: 5px;
+  }
+}
+
+.operation {
+  min-width: 450px;
+}

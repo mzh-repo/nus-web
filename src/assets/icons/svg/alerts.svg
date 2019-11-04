@@ -7,7 +7,7 @@
         <g id="Apple-TV" transform="translate(0.000000, -275.000000)">
             <rect id="矩形-copy-17" fill="#FFFFFF" x="0" y="0" width="90" height="1080"></rect>
             <g id="Group" transform="translate(0.000000, 275.000000)">
-                <rect id="矩形-copy-27" fill="#F7FBFF" x="0" y="0" width="90" height="90"></rect>
+                <rect id="矩形-copy-27" fill="#FFFFFF" x="0" y="0" width="90" height="90"></rect>
                 <g id="分组-copy" transform="translate(34.000000, 17.000000)" stroke="#6E8FB4" stroke-width="1.5">
                     <path d="M11.9259259,8.38636364 C8.10595641,8.38636364 5.00925926,11.4830608 5.00925926,15.3030303 L5.00925926,23.52 C5.00925926,23.7056011 5.15971872,23.8560606 5.34531987,23.8560606 L18.506532,23.8560606 C18.6921331,23.8560606 18.8425926,23.7056011 18.8425926,23.52 L18.8425926,15.3030303 C18.8425926,11.4830608 15.7458954,8.38636364 11.9259259,8.38636364 Z" id="矩形"></path>
                     <path d="M11.5,4.24242424 L11.5,0" id="路径" stroke-linecap="round" stroke-linejoin="round"></path>
