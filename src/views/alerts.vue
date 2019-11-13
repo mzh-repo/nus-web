@@ -44,7 +44,8 @@
       </el-form>
     </div>
     <mzh-table v-model="tableList"
-               ref="table">
+               ref="table"
+               @change-page="changePage">
     </mzh-table>
   </el-container>
 </template>
@@ -172,6 +173,8 @@ export default {
         tableTagList,
         totalNumber: 40,
       },
+      page: 0,
+      pageSize: 20,
       searchDataList: [
         {
           title: 'alarmStatus:',
@@ -211,12 +214,25 @@ export default {
     getList() {
       const data = {};
       Object.assign(data, this.searchData);
-      this.$axios.get(`/alarm?filters=${JSON.stringify(data)}`).then((res) => {
-        console.log(res);
-      });
+      this.$axios
+        .get(
+          `/alarm/list?page=${this.page}&page_size=${this.pageSize}&
+          ${data.status ? `status=${data.status}&` : ''}
+        ${data.result ? `result=${data.result}&` : ''}
+        ${data.gender ? `gender=${data.gender}&` : ''}
+        ${data.start_time ? `start_time=${data.start_time}&` : ''}
+        ${data.end_time ? `end_time=${data.end_time}&` : ''}`,
+        )
+        .then((res) => {
+          console.log(res);
+        });
     },
     searchList() {},
     selectDate() {
+      this.getList();
+    },
+    changePage(val) {
+      this.page = val;
       this.getList();
     },
   },

@@ -5,11 +5,13 @@
 .container {
   @include flex-row;
   @include set-size(100%);
+  overflow: auto;
 }
 
 .saide {
+  min-height: 890px;
   @include set-size(800px, 100%);
-
+  overflow: hidden;
   img {
     @include set-size(100%);
   }
@@ -19,7 +21,7 @@
   background-color: #fff;
   width: 1120px;
   min-width: 350px;
-
+  min-height: 890px;
   img {
     @include set-size(126px, 58px);
     margin-top: 12.2%;
@@ -61,8 +63,10 @@
     @include set-size(86%, 40px);
     background-color: #ebf1f8;
     border: hidden;
-    left: 5px;
+    left: 10px;
+    font-size: 22px;
   }
+
   //去掉输入框聚焦时产生的边框
   input:focus {
     outline: 0;
@@ -79,8 +83,10 @@
     margin-top: 60px;
     border: hidden;
     border-radius: 54px;
+    cursor: pointer;
   }
   // 去掉点击登录按钮时产生的边框
+
   button:focus {
     outline: 0;
   }

@@ -1,0 +1,70 @@
+.el-container {
+  height: 100%;
+  background-color: #fff;
+  @include flex-column;
+  justify-content: center;
+  position: relative;
+}
+
+.logo {
+  @include flex-column;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+
+  svg {
+    margin: auto;
+    @include set-size(60px, 30px);
+  }
+}
+.user {
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+
+  svg {
+    margin: auto;
+    @include set-size(29px, 28px);
+    cursor: pointer;
+  }
+
+  .user-pic img {
+    @include set-size(50px);
+    border-radius: 50%;
+    margin: 0 0 20px 0;
+    vertical-align: top;
+  }
+}
+
+.el-menu {
+  background-color: #fff;
+  border-right: 0;
+
+  .el-menu-item {
+    padding: 0;
+    height: auto;
+    margin: 16px 0;
+    &:hover,
+    &:focus {
+      background-color: #fff;
+    }
+    svg {
+      @include set-size(90px);
+    }
+  }
+}
+
+span {
+  color: #fff;
+}
+
+.el-button {
+  background-color: $primary-color;
+  width: 80%;
+  margin: auto;
+  color: #fff;
+  margin-bottom: 50px;
+}

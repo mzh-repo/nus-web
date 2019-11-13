@@ -5,75 +5,91 @@
       <!-- <div class="header-item">Corridor</div> -->
     </div>
     <div class="user">
-      <div class="user-pic"></div>
-      <div class="user-information">
-        <div class="user-name">Christina</div>
-        <div class="user-gender">female</div>
-        <div class="login-time">Last login: 2019-09-28 00:00</div>
+      <div class="user-pic">
+        <img src='@/assets/images/head.jpg'
+             alt="">
       </div>
-      <div class="reset-btn" @click="reset">Password Reset</div>
+      <div class="user-information">
+        <div class="user-name">{{username}}</div>
+        <div class="user-gender">{{gender}}</div>
+        <div class="login-time">Last login: {{lastLogin}}</div>
+      </div>
+      <div class="reset-btn"
+           @click="reset">Password Reset</div>
     </div>
     <div class="operation">
       <div class="operation-title">Administrator List</div>
       <div class="operation-area">
         <div class="search">
-          <el-input
-            v-model="searchName"
-            placeholder="Search via user name"
-            prefix-icon="el-icon-search"
-          ></el-input>
-          <div class="search-btn">
+          <el-input v-model="searchName"
+                    placeholder="Search via user name"
+                    prefix-icon="el-icon-search"></el-input>
+          <div class="search-btn"
+               @click="getList">
             Search
           </div>
         </div>
-        <div class="add-btn" @click="addAccount">
+        <div class="add-btn"
+             @click="addAccount">
           <svg-icon icon-class="addBtn" />Add New Accounts
         </div>
       </div>
     </div>
-    <el-dialog
-      center
-      :title="dialogType === 1 ? 'Add New Accounts' : 'Password Reset'"
-      width="700px"
-      :visible.sync="dialogVisible"
-    >
-      <el-form label-width="80px" label-position="left" class="assign-data">
-        <el-form-item label="Name">
-          <el-input v-model="formData.name" clearable :disabled="dialogType === 2"> </el-input>
+    <el-dialog center
+               :title="dialogType === 1 ? 'Add New Accounts' : 'Password Reset'"
+               width="700px"
+               :visible.sync="dialogVisible">
+      <el-form ref="ruleForm"
+               label-width="100px"
+               label-position="left"
+               :model="formData"
+               :rules="rules"
+               class="assign-data">
+        <el-form-item label="Name"
+                      prop="name">
+          <el-input v-model="formData.name"
+                    clearable
+                    :disabled="dialogType === 2"> </el-input>
         </el-form-item>
-        <el-form-item label="Account">
-          <el-input v-model="formData.account" clearable :disabled="dialogType === 2"> </el-input>
+        <el-form-item label="Account"
+                      prop="account">
+          <el-input v-model="formData.account"
+                    clearable
+                    :disabled="dialogType === 2"> </el-input>
         </el-form-item>
-        <el-form-item label="Gender">
-          <el-select
-            v-model="formData.gender"
-            clearable
-            placeholder="select"
-            :disabled="dialogType === 2"
-            @clear="formData.gender = ''"
-          >
+        <el-form-item label="Gender"
+                      prop="gender">
+          <el-select v-model="formData.gender"
+                     clearable
+                     placeholder="select"
+                     :disabled="dialogType === 2"
+                     @clear="formData.gender = ''">
             <template v-for="item in genderList">
-              <el-option :key="item.id" :value="item.id" :label="item.name"> </el-option>
+              <el-option :key="item.id"
+                         :value="item.id"
+                         :label="item.name"> </el-option>
             </template>
           </el-select>
         </el-form-item>
-        <el-form-item label="Password">
-          <el-input v-model="formData.password" clearable> </el-input>
+        <el-form-item label="Password"
+                      prop="password">
+          <el-input v-model="formData.password"
+                    clearable> </el-input>
         </el-form-item>
       </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button class="preserve" @click="preserve">Preserve</el-button>
+      <span slot="footer"
+            class="dialog-footer">
+        <el-button class="preserve"
+                   @click="preserve">Preserve</el-button>
         <el-button @click="dialogVisible = false">cancel</el-button>
       </span>
     </el-dialog>
-    <mzh-table
-      v-model="tableList"
-      operation
-      ref="table"
-      @reset="reset"
-      @delete="deleteAccount"
-      @change-page="changePage"
-    >
+    <mzh-table v-model="tableList"
+               operation
+               ref="table"
+               @reset="reset"
+               @delete="deleteAccount"
+               @change-page="changePage">
     </mzh-table>
   </el-container>
 </template>
@@ -81,10 +97,7 @@
 <script>
 import Table from '../components/table.vue';
 
-const genderList = [
-  { id: 1, name: 'Male' },
-  { id: 2, name: 'Female' },
-];
+const genderList = [{ id: 1, name: 'Male' }, { id: 2, name: 'Female' }];
 const tableTagList = [
   {
     label: 'Name',
@@ -167,18 +180,51 @@ export default {
         tableTagList,
         totalNumber: 40,
       },
+      rules: {
+        name: [{ required: true, message: 'please set name', trigger: 'blur' }],
+        account: [
+          { required: true, message: 'please set account', trigger: 'blur' },
+        ],
+        gender: [
+          {
+            required: true,
+            message: 'please select gender',
+            trigger: 'change',
+          },
+        ],
+        password: [
+          {
+            required: true,
+            message: 'please set password',
+            trigger: 'blur',
+          },
+        ],
+      },
+      headImgUrl: this.$store.state.headImgUrl,
+      username: this.$store.state.username,
+      gender: this.$store.state.gender,
+      lastLogin: this.$store.state.lastLogin,
       searchName: '',
       dialogVisible: false,
       genderList,
       formData: {},
       dialogType: 1,
+      page: 0,
+      pageSize: 20,
     };
   },
   created() {},
   methods: {
     getList() {
-      // eslint-disable-next-line no-console
-      console.log(this.searchData);
+      this.$axios
+        .get(
+          `guard/list?page=${this.page}&page_size${this.pageSize}&name=${
+            this.searchName
+          }`,
+        )
+        .then((res) => {
+          console.log(res);
+        });
     },
     searchList() {},
     selectDate() {
@@ -187,8 +233,39 @@ export default {
     addAccount() {
       this.dialogType = 1;
       this.dialogVisible = true;
+      this.formData = {};
     },
-    preserve() {},
+    preserve() {
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid) {
+          const data = {};
+          if (this.dialogType === 1) {
+            Object.assign(data, this.formData);
+            this.$axios
+              .post('user', data)
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((error) => {
+                console.log(error);
+                this.$message({
+                  message: 'error！',
+                  type: 'error',
+                });
+              });
+          } else if (this.dialogType === 2) {
+            Object.assign(data, this.formData);
+            this.$axios.put('user', data).then((res) => {
+              console.log(res);
+            });
+          }
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+        return false;
+      });
+    },
     reset(e) {
       this.dialogType = 2;
       this.dialogVisible = true;
@@ -205,10 +282,21 @@ export default {
         },
       )
         .then(() => {
-          this.$message({
-            type: 'success',
-            message: 'delete successed!',
-          });
+          this.$axios
+            .delete(`user?id=${e.id}`)
+            .then(() => {
+              console.log('res');
+              this.$message({
+                type: 'success',
+                message: 'delete successed!',
+              });
+            })
+            .catch(() => {
+              this.$message({
+                type: 'success',
+                message: 'delete successed!',
+              });
+            });
         })
         .catch(() => {
           this.$message({
@@ -218,8 +306,9 @@ export default {
         });
       console.log(e);
     },
-    changePage(e) {
-      console.log(e);
+    changePage(val) {
+      this.page = val;
+      this.getList();
     },
   },
   watch: {},
@@ -227,5 +316,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/views/manegement.scss";
+@import '../assets/styles/views/manegement.scss';
 </style>

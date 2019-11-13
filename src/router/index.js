@@ -10,6 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/login',
       component: () => import('../views/dashboard/material'),
       children: [
         {

@@ -20,14 +20,13 @@ new Vue({
 }).$mount('#app');
 
 router.beforeEach((to, from, next) => {
-  if (
-    to.path === '/login'
-    || to.path === '/alerts'
-    || to.path === '/dashboard'
-    || to.path === '/management'
-  ) {
+  if (to.path === '/login') {
     next();
   } else {
-    next('/alerts');
+    const token = localStorage.getItem('Authorization');
+    if (!token || token === 'null' || token === '') {
+      next('/login');
+    }
+    next();
   }
 });

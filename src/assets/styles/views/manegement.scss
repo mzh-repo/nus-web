@@ -31,10 +31,10 @@
   margin: 18px 0 70px;
 }
 
-.user-pic {
+.user-pic img {
   @include set-size(150px);
-  background-color: #ff6700;
   border-radius: 50%;
+  vertical-align: top;
 }
 
 .user-information {
