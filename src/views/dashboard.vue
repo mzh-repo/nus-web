@@ -54,8 +54,8 @@
            :key="dashboard.id"
            class="list-content"
            :class="fullWidth?'contents':'content'">
-        <div>{{dashboard.level}}</div>
-        <div>{{dashboard.room}}</div>
+        <div>{{dashboard.region}}</div>
+        <div>{{dashboard.level}} - {{dashboard.room}}</div>
         <div v-if="dashboard.online"
              class="tips"
              @click="getOnline(dashboard.id)">Try to go online again</div>
