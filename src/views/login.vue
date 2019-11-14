@@ -66,11 +66,10 @@ export default {
             if (res.login_token) {
               const tokenId = res.login_token;
               localStorage.setItem('Authorization', tokenId);
+              localStorage.setItem('userData', JSON.stringify(res));
+              localStorage.setItem('Account', res.account);
               localStorage.setItem('Username', res.name);
-              localStorage.setItem(
-                'Gender',
-                res.gender === 1 ? 'female' : 'male',
-              );
+              localStorage.setItem('Gender', res.gender);
               localStorage.setItem('LastLogin', res.last_login_time);
               this.$store.commit('setUser');
               if (tokenId) {

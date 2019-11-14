@@ -17,19 +17,21 @@
               scope.row.status_string
               }}</div>
           </span>
-          <span v-else-if="tableTag.prop === 'report_type'">
+          <span v-else-if="tableTag.prop === 'result'">
             <div :class="getResultClassName(scope.row[tableTag.prop])">{{
-              scope.row.report_type_string
+              scope.row.result_string
               }}</div>
           </span>
           <span v-else-if="tableTag.prop === 'face_pic'||tableTag.prop === 'human_pic'">
-            <el-image :src="scope.row[tableTag.prop]"
-                      :preview-src-list="[scope.row[tableTag.prop]]"
+            <el-image :src="scope.row[`${tableTag.prop}_url`]"
+                      :preview-src-list="[scope.row[`${tableTag.prop}_url`]]"
                       alt="no pic"
                       class="img" />
           </span>
+          <span v-else-if="tableTag.prop === 'reported_gender'||tableTag.prop === 'gender'"
+                class="table-span">{{getGender(scope.row[tableTag.prop])}}</span>
           <span v-else
-                class="table-span">{{scope.row[tableTag.prop]}}</span>
+                class="table-span">{{scope.row[tableTag.prop]||'null'}}</span>
         </template>
       </el-table-column>
       <el-table-column v-if="operation"
@@ -92,6 +94,7 @@ export default {
       btnWidth: '75px',
       role: '',
       operationLength: '600',
+      imgurl: '',
     };
   },
   mounted() {
@@ -126,6 +129,18 @@ export default {
       }
       return '';
     },
+    getGender(val) {
+      if (val === -1) {
+        return 'Unknow';
+      }
+      if (val === 1) {
+        return 'Male';
+      }
+      if (val === 0) {
+        return 'Female';
+      }
+      return null;
+    },
     scroll() {
       this.show = false;
       this.$nextTick(() => {
@@ -134,13 +149,13 @@ export default {
       });
     },
     limitWidth(tag) {
-      if (tag.prop === 'time' || tag.prop === 'lastLogin') {
+      if (tag.prop === 'report_time' || tag.prop === 'last_login_time') {
         return '200px';
       }
       if (tag.prop === 'face_pic' || tag.prop === 'human_pic') {
         return '160px';
       }
-      if (tag.prop === 'report_type') {
+      if (tag.prop === 'result') {
         return '160px';
       }
       if (tag.prop === 'status') {
@@ -150,7 +165,7 @@ export default {
         return '80px';
       }
       if (
-        tag.prop === 'gender'
+        tag.prop === 'reported_gender'
         || tag.prop === 'name'
         || tag.prop === 'account'
       ) {

@@ -10,12 +10,12 @@
              alt="">
       </div>
       <div class="user-information">
-        <div class="user-name">{{username}}</div>
-        <div class="user-gender">{{gender}}</div>
-        <div class="login-time">Last login: {{lastLogin}}</div>
+        <div class="user-name">{{userData.name}}</div>
+        <div class="user-gender">{{userData.gender===0?'Male':'Female'}}</div>
+        <div class="login-time">Last login: {{userData.last_login_time}}</div>
       </div>
       <div class="reset-btn"
-           @click="reset">Password Reset</div>
+           @click="reset(userData)">Password Reset</div>
     </div>
     <div class="operation">
       <div class="operation-title">Administrator List</div>
@@ -23,7 +23,8 @@
         <div class="search">
           <el-input v-model="searchName"
                     placeholder="Search via user name"
-                    prefix-icon="el-icon-search"></el-input>
+                    prefix-icon="el-icon-search"
+                    @keyup.enter.native="getList" />
           <div class="search-btn"
                @click="getList">
             Search
@@ -74,7 +75,7 @@
         <el-form-item label="Password"
                       prop="password">
           <el-input v-model="formData.password"
-                    clearable> </el-input>
+                    clearable />
         </el-form-item>
       </el-form>
       <span slot="footer"
@@ -97,7 +98,7 @@
 <script>
 import Table from '../components/table.vue';
 
-const genderList = [{ id: 1, name: 'Male' }, { id: 2, name: 'Female' }];
+const genderList = [{ id: 1, name: 'Male' }, { id: 0, name: 'Female' }];
 const tableTagList = [
   {
     label: 'Name',
@@ -113,7 +114,7 @@ const tableTagList = [
   },
   {
     label: 'Last login',
-    prop: 'lastLogin',
+    prop: 'last_login_time',
   },
 ];
 export default {
@@ -121,62 +122,7 @@ export default {
   data() {
     return {
       tableList: {
-        tableData: [
-          {
-            name: 'Ella',
-            gender: 'Male',
-            lastLogin: '2019-08-15 13:23:59',
-            account: 'Ella4251',
-            processResult: 1,
-            alarmStatus: 2,
-            alarmStatus_string: 'Unacknowledged',
-          },
-          {
-            name: 'Ella',
-            gender: 'Male',
-            lastLogin: '2019-08-15 13:23:59',
-            account: 'Ella4251',
-            processResult: 1,
-            alarmStatus: 2,
-            alarmStatus_string: 'Unacknowledged',
-          },
-          {
-            name: 'Ella',
-            gender: 'Male',
-            lastLogin: '2019-08-15 13:23:59',
-            account: 'Ella4251',
-            processResult: 1,
-            alarmStatus: 2,
-            alarmStatus_string: 'Unacknowledged',
-          },
-          {
-            name: 'Ella',
-            gender: 'Male',
-            lastLogin: '2019-08-15 13:23:59',
-            account: 'Ella4251',
-            processResult: 1,
-            alarmStatus: 2,
-            alarmStatus_string: 'Unacknowledged',
-          },
-          {
-            name: 'Ella',
-            gender: 'Male',
-            lastLogin: '2019-08-15 13:23:59',
-            account: 'Ella4251',
-            processResult: 1,
-            alarmStatus: 2,
-            alarmStatus_string: 'Unacknowledged',
-          },
-          {
-            name: 'Ella',
-            gender: 'Male',
-            lastLogin: '2019-08-15 13:23:59',
-            account: 'Ella4251',
-            processResult: 1,
-            alarmStatus: 2,
-            alarmStatus_string: 'Unacknowledged',
-          },
-        ],
+        tableData: [],
         tableTagList,
         totalNumber: 40,
       },
@@ -200,30 +146,35 @@ export default {
           },
         ],
       },
-      headImgUrl: this.$store.state.headImgUrl,
-      username: this.$store.state.username,
-      gender: this.$store.state.gender,
-      lastLogin: this.$store.state.lastLogin,
+      userData: this.$store.state.userData,
       searchName: '',
       dialogVisible: false,
       genderList,
-      formData: {},
+      formData: {
+        password: '',
+        name: '',
+        gender: '',
+        account: '',
+      },
       dialogType: 1,
       page: 0,
       pageSize: 20,
     };
   },
-  created() {},
+  mounted() {
+    this.getList();
+  },
   methods: {
     getList() {
       this.$axios
         .get(
-          `guard/list?page=${this.page}&page_size${this.pageSize}&name=${
+          `user/guard/list?page=${this.page}&page_size=${this.pageSize}&name=${
             this.searchName
           }`,
         )
         .then((res) => {
-          console.log(res);
+          this.tableList.tableData = res.data;
+          this.tableList.totalNumber = res.total;
         });
     },
     searchList() {},
@@ -233,7 +184,25 @@ export default {
     addAccount() {
       this.dialogType = 1;
       this.dialogVisible = true;
-      this.formData = {};
+      this.formData = {
+        password: '',
+        name: '',
+        gender: '',
+        account: '',
+      };
+      this.$nextTick(() => {
+        this.$refs.ruleForm.clearValidate();
+      });
+    },
+    reset(e) {
+      this.dialogType = 2;
+      this.dialogVisible = true;
+
+      Object.assign(this.formData, e, { password: '' });
+
+      this.$nextTick(() => {
+        this.$refs.ruleForm.clearValidate();
+      });
     },
     preserve() {
       this.$refs.ruleForm.validate((valid) => {
@@ -242,12 +211,11 @@ export default {
           if (this.dialogType === 1) {
             Object.assign(data, this.formData);
             this.$axios
-              .post('user', data)
-              .then((res) => {
-                console.log(res);
+              .post('user/guard', data)
+              .then(() => {
+                this.dialogVisible = false;
               })
-              .catch((error) => {
-                console.log(error);
+              .catch(() => {
                 this.$message({
                   message: 'error！',
                   type: 'error',
@@ -255,22 +223,30 @@ export default {
               });
           } else if (this.dialogType === 2) {
             Object.assign(data, this.formData);
-            this.$axios.put('user', data).then((res) => {
-              console.log(res);
-            });
+            if (data.role_name === 'user:manager') {
+              this.$axios
+                .put('user/manager', { password: data.password })
+                .then(() => {
+                  this.getList();
+                });
+            } else {
+              this.$axios
+                .put(`user/guard/${data.id}`, {
+                  id: data.id,
+                  password: data.password,
+                })
+                .then(() => {
+                  this.getList();
+                });
+            }
           }
         } else {
-          console.log('error submit!!');
           return false;
         }
         return false;
       });
     },
-    reset(e) {
-      this.dialogType = 2;
-      this.dialogVisible = true;
-      Object.assign(this.formData, e);
-    },
+
     deleteAccount(e) {
       this.$confirm(
         'This operation will permanently delete this account. Do you want to continue?',
@@ -283,9 +259,9 @@ export default {
       )
         .then(() => {
           this.$axios
-            .delete(`user?id=${e.id}`)
+            .delete(`user/guard/${e.id}`)
             .then(() => {
-              console.log('res');
+              this.getList();
               this.$message({
                 type: 'success',
                 message: 'delete successed!',
@@ -293,8 +269,8 @@ export default {
             })
             .catch(() => {
               this.$message({
-                type: 'success',
-                message: 'delete successed!',
+                type: 'woring',
+                message: 'delete error!',
               });
             });
         })
@@ -304,7 +280,6 @@ export default {
             message: 'Cancel',
           });
         });
-      console.log(e);
     },
     changePage(val) {
       this.page = val;
