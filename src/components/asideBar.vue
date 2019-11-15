@@ -10,7 +10,6 @@
                       :index="menu.path"
                       :key="menu.name">
           <svg-icon :icon-class="selectItem === menu.path ? menu.selectIcon: menu.name"></svg-icon>
-
         </el-menu-item>
       </template>
     </el-menu>
@@ -22,7 +21,6 @@
       <div @click="handleExit">
         <svg-icon icon-class="exit" />
       </div>
-
     </el-row>
   </el-container>
 </template>
@@ -37,12 +35,12 @@ export default {
     };
   },
   mounted() {
-    this.selectItem = this.$router.options.routes[0].children[0].path;
+    this.selectItem = this.$route.path;
   },
   methods: {
     handleSelect(e) {
       this.selectItem = e;
-      this.$router.replace(e);
+      // this.$router.replace(e);
     },
     handleExit() {
       localStorage.clear();

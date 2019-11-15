@@ -18,7 +18,8 @@
               }}</div>
           </span>
           <span v-else-if="tableTag.prop === 'result'">
-            <div :class="getResultClassName(scope.row[tableTag.prop])">{{
+            <div :class="getResultClassName(scope.row[tableTag.prop])"
+                 @click.stop="handleClickResult(scope.row)">{{
               scope.row.result_string
               }}</div>
           </span>
@@ -120,6 +121,9 @@ export default {
     handleDeleteAccount(val) {
       this.$emit('delete', val);
     },
+    handleClickResult(val) {
+      this.$emit('click-result', val);
+    },
     tableRowClassName(val) {
       if (val.row.highlight === 1) {
         return 'highlight-row';
@@ -191,21 +195,21 @@ export default {
     },
     getResultClassName(index) {
       if (index === -1) {
-        return 'alarm-item alarm-second';
+        return 'alarm-item cu alarm-second';
       }
       if (index === 0) {
-        return 'alarm-item alarm-third';
+        return 'alarm-item cu alarm-third';
       }
       if (index === 1) {
-        return 'alarm-item alarm-fourth';
+        return 'alarm-item cu alarm-fourth';
       }
       if (index === 2) {
-        return 'alarm-item alarm-third';
+        return 'alarm-item cu alarm-third';
       }
       if (index === 3) {
-        return 'alarm-item alarm-first';
+        return 'alarm-item cu alarm-first';
       }
-      return 'alarm-item';
+      return 'alarm-item cu';
     },
   },
 };

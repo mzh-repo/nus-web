@@ -45,7 +45,8 @@
     </div>
     <mzh-table v-model="tableList"
                ref="table"
-               @change-page="changePage">
+               @change-page="changePage"
+               @click-result="clickResult">
     </mzh-table>
   </el-container>
 </template>
@@ -66,7 +67,7 @@ const processResultList = [
   { id: 2, name: 'Captured' },
   { id: 3, name: 'Escaped' },
 ];
-const genderList = [{ id: 0, name: 'Male' }, { id: -1, name: 'Unknow' }];
+const genderList = [{ id: 1, name: 'Male' }, { id: -1, name: 'Unknow' }];
 const tableTagList = [
   {
     label: 'No.',
@@ -110,7 +111,7 @@ export default {
       pageSize: 20,
       searchDataList: [
         {
-          title: 'alarmStatus:',
+          title: 'Alarm Status:',
           value: '',
           list: alarmStatusList,
           className: 'serach-alarm',
@@ -150,11 +151,11 @@ export default {
       this.$axios
         .get(
           `/alarm/list?page=${this.page}&page_size=${this.pageSize}${
-            data.alarmStatus ? `&status=${data.alarmStatus}` : ''
-          }${data.processResult ? `&result=${data.processResult}` : ''}${
-            data.gender ? `&gender=${data.gender}` : ''
-          }${data.startTime ? `&start_time=${data.startTime}` : ''}${
-            data.endTime ? `&end_time=${data.endTime}` : ''
+            data.alarmStatus !== '' ? `&status=${data.alarmStatus}` : ''
+          }${data.processResult !== '' ? `&result=${data.processResult}` : ''}${
+            data.gender !== '' ? `&gender=${data.gender}` : ''
+          }${data.startTime !== '' ? `&start_time=${data.startTime}` : ''}${
+            data.endTime !== '' ? `&end_time=${data.endTime}` : ''
           }`,
         )
         .then((res) => {
@@ -167,12 +168,12 @@ export default {
           this.tableList.tableData = res.data;
           this.tableList.totalNumber = res.total;
           res.data.forEach((item) => {
-            this.$axios.get(`image/${item.face_pic}`).then((response) => {
+            this.$axios.get(`image/face_pic/${item.id}`).then((response) => {
               Object.assign(item, {
                 face_pic_url: response,
               });
             });
-            this.$axios.get(`image/${item.human_pic}`).then((request) => {
+            this.$axios.get(`image/human_pic/${item.id}`).then((request) => {
               Object.assign(item, { human_pic_url: request });
             });
           });
@@ -180,11 +181,22 @@ export default {
     },
     searchList() {},
     selectDate() {
+      if (this.searchData.endTime === null) {
+        this.searchData.endTime = '';
+      }
+      if (this.searchData.startTime === null) {
+        this.searchData.startTime = '';
+      }
       this.getList();
     },
     changePage(val) {
       this.page = val;
       this.getList();
+    },
+    clickResult(e) {
+      this.$alert(e.remark ? e.remark : 'null', 'Remark', {
+        confirmButtonText: 'OK',
+      });
     },
   },
   watch: {

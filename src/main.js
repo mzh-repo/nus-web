@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import locale from 'element-ui/lib/locale/lang/en';
 import echart from 'echarts';
 import App from './App.vue';
 import router from './router';
@@ -11,7 +12,7 @@ import './assets/icons';
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 Vue.prototype.$echart = echart;
-Vue.use(ElementUI);
+Vue.use(ElementUI, { locale });
 
 new Vue({
   router,

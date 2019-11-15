@@ -60,7 +60,7 @@
              class="tips"
              @click="getOnline(dashboard.id)">Try to go online again</div>
         <div v-else
-             class="tip">Uploading…</div>
+             class="tip">Going online…</div>
       </div>
     </div>
     <el-pagination background

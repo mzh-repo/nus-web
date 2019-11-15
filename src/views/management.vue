@@ -177,7 +177,6 @@ export default {
           this.tableList.totalNumber = res.total;
         });
     },
-    searchList() {},
     selectDate() {
       this.getList();
     },
@@ -214,6 +213,7 @@ export default {
               .post('user/guard', data)
               .then(() => {
                 this.dialogVisible = false;
+                this.getList();
               })
               .catch(() => {
                 this.$message({

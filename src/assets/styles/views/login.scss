@@ -12,6 +12,7 @@
   min-height: 890px;
   @include set-size(800px, 100%);
   overflow: hidden;
+
   img {
     @include set-size(100%);
   }
@@ -22,6 +23,7 @@
   width: 1120px;
   min-width: 350px;
   min-height: 890px;
+  
   img {
     @include set-size(126px, 58px);
     margin-top: 12.2%;

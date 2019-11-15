@@ -76,20 +76,20 @@ export default {
                 this.$router.push('/alerts');
               }
               this.$message({
-                message: 'Login successfully！',
+                message: 'Login successfully!',
                 showClose: true,
                 type: 'success',
               });
             } else {
               this.$message({
-                message: 'Login error！',
+                message: 'Login error!',
                 type: 'error',
               });
             }
           })
           .catch(() => {
             this.$message({
-              message: 'server error！',
+              message: 'Login error!',
               type: 'error',
             });
           });
