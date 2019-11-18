@@ -86,7 +86,7 @@ const tableTagList = [
     prop: 'face_pic',
   },
   {
-    label: 'HumanPic',
+    label: 'BodyPic',
     prop: 'human_pic',
   },
   {
@@ -154,8 +154,14 @@ export default {
             data.alarmStatus !== '' ? `&status=${data.alarmStatus}` : ''
           }${data.processResult !== '' ? `&result=${data.processResult}` : ''}${
             data.gender !== '' ? `&gender=${data.gender}` : ''
-          }${data.startTime !== '' ? `&start_time=${data.startTime}` : ''}${
-            data.endTime !== '' ? `&end_time=${data.endTime}` : ''
+          }${
+            data.startTime !== '' && data.startTime !== null
+              ? `&start_time=${data.startTime}`
+              : ''
+          }${
+            data.endTime !== '' && data.endTime !== null
+              ? `&end_time=${data.endTime}`
+              : ''
           }`,
         )
         .then((res) => {
