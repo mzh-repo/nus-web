@@ -196,9 +196,7 @@ export default {
     reset(e) {
       this.dialogType = 2;
       this.dialogVisible = true;
-
       Object.assign(this.formData, e, { password: '' });
-
       this.$nextTick(() => {
         this.$refs.ruleForm.clearValidate();
       });
@@ -227,6 +225,7 @@ export default {
               this.$axios
                 .put('user/manager', { password: data.password })
                 .then(() => {
+                  this.dialogVisible = false;
                   this.getList();
                 });
             } else {
@@ -236,6 +235,7 @@ export default {
                   password: data.password,
                 })
                 .then(() => {
+                  this.dialogVisible = false;
                   this.getList();
                 });
             }

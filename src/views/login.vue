@@ -51,15 +51,6 @@ export default {
       if (this.loginData.account && this.loginData.password) {
         const data = {};
         Object.assign(data, this.loginData);
-        // localStorage.setItem('Authorization', 'tokenId');
-        // localStorage.setItem(
-        //   'HeadImgUrl',
-        //   'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1829100024,2848942066&fm=26&gp=0.jpg',
-        // );
-        // localStorage.setItem('Username', data.name);
-        // localStorage.setItem('Gender', 'female');
-        // localStorage.setItem('LastLogin', '2019-09-28 00:00:00');
-        // this.$router.push('/alerts');
         this.$axios
           .post('user/login', data)
           .then((res) => {
@@ -67,10 +58,6 @@ export default {
               const tokenId = res.login_token;
               localStorage.setItem('Authorization', tokenId);
               localStorage.setItem('userData', JSON.stringify(res));
-              localStorage.setItem('Account', res.account);
-              localStorage.setItem('Username', res.name);
-              localStorage.setItem('Gender', res.gender);
-              localStorage.setItem('LastLogin', res.last_login_time);
               this.$store.commit('setUser');
               if (tokenId) {
                 this.$router.push('/alerts');

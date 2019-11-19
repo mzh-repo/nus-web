@@ -40,20 +40,14 @@ export default {
   methods: {
     handleSelect(e) {
       this.selectItem = e;
-      // this.$router.replace(e);
     },
     handleExit() {
-      // localStorage.clear();
-      // this.$router.replace('/login');
       const token = localStorage.getItem('Authorization');
       this.$axios.post(`user/logout?Authorization=${token}`).then(() => {
         localStorage.clear();
         this.$router.replace('/');
       });
     },
-    // showMy() {
-    //   this.$store.commit('setShow');
-    // },
   },
   watch: {
     '$route.path': {
