@@ -9,6 +9,15 @@ module.exports = {
   outputDir: 'dist',
   devServer: {
     // port: 3000,
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://137.132.174.66:8084',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/api': '/',
+    //     },
+    //   },
+    // },
   },
   configureWebpack: {
     resolve: {

@@ -41,12 +41,20 @@
                           @change="selectDate">
           </el-date-picker>
         </el-form-item>
+        <el-form-item>
+          <el-button size="medium"
+                     type="primary"
+                     @click="exportData">
+            Data Export
+          </el-button>
+        </el-form-item>
       </el-form>
     </div>
     <mzh-table v-model="tableList"
                ref="table"
                @change-page="changePage"
-               @click-result="clickResult">
+               @click-result="clickResult"
+               @time-sort="handleSort">
     </mzh-table>
   </el-container>
 </template>
@@ -67,7 +75,10 @@ const processResultList = [
   { id: 2, name: 'Captured' },
   { id: 3, name: 'Escaped' },
 ];
-const genderList = [{ id: 1, name: 'Male' }, { id: -1, name: 'Unknow' }];
+const genderList = [
+  { id: 1, name: 'Male' },
+  { id: -1, name: 'Unknow' },
+];
 const tableTagList = [
   {
     label: 'No.',
@@ -76,6 +87,7 @@ const tableTagList = [
   {
     label: 'Time',
     prop: 'report_time',
+    sort: true,
   },
   {
     label: 'Gender',
@@ -139,22 +151,27 @@ export default {
         startTime: '',
         endTime: '',
       },
+      sort: '',
     };
   },
   mounted() {
     this.getList();
   },
   methods: {
+    handleSort(column) {
+      this.sort = column;
+      this.getList();
+    },
     getList() {
       const data = {};
       Object.assign(data, this.searchData);
       this.$axios
         .get(
           `/alarm/list?page=${this.page}&page_size=${this.pageSize}${
-            data.alarmStatus !== '' ? `&status=${data.alarmStatus}` : ''
-          }${data.processResult !== '' ? `&result=${data.processResult}` : ''}${
-            data.gender !== '' ? `&gender=${data.gender}` : ''
-          }${
+            this.sort !== '' ? `&time_sort=${this.sort}` : ''
+          }${data.alarmStatus !== '' ? `&status=${data.alarmStatus}` : ''}${
+            data.processResult !== '' ? `&result=${data.processResult}` : ''
+          }${data.gender !== '' ? `&gender=${data.gender}` : ''}${
             data.startTime !== '' && data.startTime !== null
               ? `&start_time=${data.startTime}`
               : ''
@@ -202,6 +219,30 @@ export default {
     clickResult(e) {
       this.$alert(e.remark ? e.remark : 'null', 'Remark', {
         confirmButtonText: 'OK',
+      });
+    },
+    exportData() {
+      this.$axios.get('/alarm/csv').then((res) => {
+        const blob = new Blob([res], { type: 'text/csv' });
+        const href = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = href;
+        a.download = 'alarm.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(href);
+      });
+      this.$axios.get('/camera/csv').then((res) => {
+        const blob = new Blob([res], { type: 'text/csv' });
+        const href = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = href;
+        a.download = 'camera.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(href);
       });
     },
   },

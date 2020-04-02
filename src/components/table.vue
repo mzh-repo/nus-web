@@ -5,12 +5,14 @@
               :data="value.tableData"
               :row-class-name="tableRowClassName"
               height="500"
-              class="table-main">
+              class="table-main"
+              @sort-change="handleSort">
       <el-table-column v-for="(tableTag, index) in value.tableTagList"
                        :min-width="limitWidth(tableTag)"
                        :key="index"
                        :label="tableTag.label"
-                       :prop="tableTag.prop">
+                       :prop="tableTag.prop"
+                       :sortable="tableTag.sort ? 'custom' : false">
         <template slot-scope="scope">
           <span v-if="tableTag.prop === 'status'">
             <div :class="getAlarmClassName(scope.row[tableTag.prop])">{{
@@ -109,6 +111,19 @@ export default {
     };
   },
   methods: {
+    handleSort(column) {
+      const order = this.convertOrder(column.order);
+      this.$emit('time-sort', order);
+    },
+    convertOrder(val) {
+      if (val === 'descending') {
+        return 'desc';
+      }
+      if (val === 'ascending') {
+        return 'asc';
+      }
+      return '';
+    },
     handleCurrentChange(val) {
       this.$emit('change-page', val - 1);
     },
@@ -169,9 +184,11 @@ export default {
         return '80px';
       }
       if (
-        tag.prop === 'reported_gender'
-        || tag.prop === 'name'
-        || tag.prop === 'account'
+        // eslint-disable-next-line operator-linebreak
+        tag.prop === 'reported_gender' ||
+        // eslint-disable-next-line operator-linebreak
+        tag.prop === 'name' ||
+        tag.prop === 'account'
       ) {
         return '120px';
       }

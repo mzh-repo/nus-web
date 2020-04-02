@@ -4,6 +4,7 @@ import url from './config';
 
 const config = {
   baseUrl: `${url.localUrl}/`,
+  // baseUrl: '/api',
 };
 
 axios.defaults.baseURL = config.baseUrl;
@@ -18,7 +19,8 @@ axios.interceptors.request.use((req) => {
 });
 
 axios.interceptors.response.use(
-  res => res.data,
+  // eslint-disable-next-line arrow-parens
+  (res) => res.data,
   (error) => {
     if (error.response.status === 401) {
       router.push('/login');
