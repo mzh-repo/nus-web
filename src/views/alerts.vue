@@ -35,7 +35,7 @@
           <el-date-picker v-model="searchData.endTime"
                           clearable
                           type="datetime"
-                          placeholder="Start Time"
+                          placeholder="End Time"
                           value-format="yyyy-MM-dd HH:mm:ss"
                           class="search-date"
                           @change="selectDate">
@@ -85,6 +85,10 @@ const tableTagList = [
     prop: 'id',
   },
   {
+    label: 'CameraId',
+    prop: 'camera_id',
+  },
+  {
     label: 'Time',
     prop: 'report_time',
     sort: true,
@@ -123,6 +127,13 @@ export default {
       pageSize: 20,
       searchDataList: [
         {
+          title: 'Camera Id:',
+          value: '',
+          list: [],
+          className: 'serach-alarm',
+          prop: 'cameraId',
+        },
+        {
           title: 'Alarm Status:',
           value: '',
           list: alarmStatusList,
@@ -145,6 +156,7 @@ export default {
         },
       ],
       searchData: {
+        cameraId: '',
         gender: '',
         processResult: '',
         alarmStatus: '',
@@ -156,8 +168,20 @@ export default {
   },
   mounted() {
     this.getList();
+    this.getCamera();
   },
   methods: {
+    getCamera() {
+      this.$axios.get('/camera').then((res) => {
+        const data = res.map((item) => {
+          const obj = { id: '', name: '' };
+          obj.id = item.camera_id;
+          obj.name = item.camera_id;
+          return obj;
+        });
+        this.searchDataList[0].list = data;
+      });
+    },
     handleSort(column) {
       this.sort = column;
       this.getList();
@@ -169,9 +193,11 @@ export default {
         .get(
           `/alarm/list?page=${this.page}&page_size=${this.pageSize}${
             this.sort !== '' ? `&time_sort=${this.sort}` : ''
-          }${data.alarmStatus !== '' ? `&status=${data.alarmStatus}` : ''}${
-            data.processResult !== '' ? `&result=${data.processResult}` : ''
-          }${data.gender !== '' ? `&gender=${data.gender}` : ''}${
+          }${data.cameraId !== '' ? `&camera_id=${data.cameraId}` : ''}${
+            data.alarmStatus !== '' ? `&status=${data.alarmStatus}` : ''
+          }${data.processResult !== '' ? `&result=${data.processResult}` : ''}${
+            data.gender !== '' ? `&gender=${data.gender}` : ''
+          }${
             data.startTime !== '' && data.startTime !== null
               ? `&start_time=${data.startTime}`
               : ''
@@ -247,6 +273,14 @@ export default {
     },
   },
   watch: {
+    'searchData.cameraId': {
+      handler(val) {
+        if (val === undefined) {
+          this.searchData.cameraId = '';
+        }
+        this.getList();
+      },
+    },
     'searchData.alarmStatus': {
       handler(val) {
         if (val === undefined) {

@@ -6,7 +6,7 @@
   justify-content: flex-start;
   position: relative;
   padding: 30px 40px 30px;
-  font-family: "PingFangSC-Regular", "PingFang SC";
+  font-family: 'PingFangSC-Regular', 'PingFang SC';
   font-weight: 400;
 }
 
@@ -41,6 +41,7 @@
 
   &:last-child {
     margin: 0;
+    float: right;
   }
 
   // &:nth-child(2) {
